@@ -11,9 +11,9 @@ import subprocess
 class detection_bra(tf.keras.Model):
     def __init__(self):
         super(detection_bra,self).__init__()
-        self.geoconv=tf.keras.layers.Conv2D(4,(1,1),padding='same',activation='sigmoid')
-        self.scoreconv=tf.keras.layers.Conv2D(1,(1,1),padding='same',activation='sigmoid')
-        self.angleconv=tf.keras.layers.Conv2D(1,(1,1),padding='same',activation='sigmoid')
+        self.geoconv=tf.keras.layers.Conv2D(4,(1,1),padding='same',activation='sigmoid',name='geo_conv')
+        self.scoreconv=tf.keras.layers.Conv2D(1,(1,1),padding='same',activation='sigmoid',name='score_conv')
+        self.angleconv=tf.keras.layers.Conv2D(1,(1,1),padding='same',activation='sigmoid',name='angle_conv')
     def call(self,input):
         geo_map = self.geoconv(input)
         score_map = self.scoreconv(input)
